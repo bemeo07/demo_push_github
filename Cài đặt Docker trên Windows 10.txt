@@ -1,0 +1,40 @@
+Cài đặt Docker trên Windows 10
+Cài Docker Desktop
+1)Trên Windows, cài Docker Desktop Installer theo link này: https://desktop.docker.com/win/stable/Docker Desktop Installer.exe, có nhiều options nhưng tôi khuyến khích chọn theo recommendation.
+
+2)Có 2 cách để vào phần Settings (mục này quan trọng lắm)
+
+Click chuột phải docker icon và chọn Settings
+Vào giao diện chính như hình trên và chọn icon bánh răng
+
+3)Ở đây xảy ra 2 trường hợp:
+
+Bạn chọn dùng Windows Container làm backend engine
+Bạn chọn dùng WSL 2 làm backend engine
+Cả 2 cách có ưu/nhược bù trừ. Như bạn dùng Windows Container thì setup đơn giản vì Windows 10 hỗ trợ hết rồi, nhưng khổ nỗi chạy không mượt bằng WSL 2. Còn nếu bạn dùng cách 2 thì chạy ngon hơn cách 1 nhưng setup thì rườm rà.
+
+Tôi sẽ hướng dẫn các bạn cách 1 trước: sử dụng Windows Container
+
+	a)Bạn vào Apps&Features, một mục trong Settings của Windows
+	b)Vào phần Programes and Features góc phải bên trên
+	c)Vào phần Turn Windows features on or off
+	d)Bạn chọn 2 ô Containers và Hyper-V 
+	e)Restart máy
+
+Cài đặt WSL 2
+
+	a)Bật tính năng Windows Subsystem for Linux bằng CMD của Windows, type dòng này:
+	dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+	b)iểm tra cấu hình máy xem có đủ điều kiện không
+	For x64 systems: Version 1903 or higher, with Build 18362 or higher.
+	For ARM64 systems: Version 2004 or higher, with Build 19041 or higher.
+	c)Bật tính năng Virtual Machine (máy ảo) lên
+	dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+	d)Tải về gói update Linux kernel qua link:
+	https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+	e)Để WSL 2 làm mặc định khi cài đặt Linux distribution
+	wsl --set-default-version 2
+
+Về cơ bản làm xong bước trên là ok rồi nhưng nếu bạn muốn dùng Ubuntu hay Kali hay Debian thì vào Microsoft Store để tải các Linux distribution về nhé (https://aka.ms/wslstore)
+Sau đó Linux sẽ đòi hỏi bạn tạo Username, Password các kiểu nhưng chỉ một lần thôi
+Nếu bạn dùng WSL 2 làm backend thì không cần lo việc thay đổi Settings của Docker Desktop như tài nguyên máy cần sử dụng hay mount đường dẫn trong/ngoài container bởi mọi thứ đã được config sẵn rồi.

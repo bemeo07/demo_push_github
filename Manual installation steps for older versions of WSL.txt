@@ -1,0 +1,38 @@
+Manual installation steps for older versions of WSL
+
+1)Step 1 - Enable the Windows Subsystem for Linux
+
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+2)Step 2 - Check requirements for running WSL 2
+
+
+3)Step 3 - Enable Virtual Machine feature
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+4)Step 4 - Download the Linux kernel update package
+	a)Download the latest package:
+	https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package:~:text=WSL2%20Linux%20kernel%20update%20package%20for%20x64%20machines
+
+	b)Run the update package downloaded in the previous step. 
+	(Double-click to run - you will be prompted for elevated permissions, select ‘yes’ to approve this installation.)
+
+5)Step 5 - Set WSL 2 as your default version
+wsl --set-default-version 2
+
+6)Step 6 - Install your Linux distribution of choice
+	a)Open the Microsoft Store and select your favorite Linux distribution.
+	Ubuntu 18.04 LTS
+	Ubuntu 20.04 LTS
+	Ubuntu 22.04 LTS
+	openSUSE Leap 15.1
+	SUSE Linux Enterprise Server 12 SP5
+	SUSE Linux Enterprise Server 15 SP1
+	Kali Linux
+	Debian GNU/Linux
+	Fedora Remix for WSL
+	Pengwin	
+	Pengwin Enterprise
+	Alpine WSL
+	Raft(Free Trial)
+	b)From the distribution's page, select "Get".
